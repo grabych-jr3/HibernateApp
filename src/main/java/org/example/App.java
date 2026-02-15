@@ -17,9 +17,10 @@ public class App
         try{
             session.beginTransaction();
 
-            Person person = session.find(Person.class, 1);
-            System.out.println(person.getName());
-            System.out.println(person.getAge());
+            Person person1 = new Person("testName1", 19);
+            Person person2 = new Person("testName2", 23);
+            session.persist(person1);
+            session.persist(person2);
 
             session.getTransaction().commit();
         } finally {
