@@ -17,10 +17,11 @@ public class App
         try{
             session.beginTransaction();
 
-            Person person1 = new Person("testName1", 19);
-            Person person2 = new Person("testName2", 23);
-            session.persist(person1);
-            session.persist(person2);
+            Person person1 = session.find(Person.class, 2);
+            person1.setAge(18);
+
+            Person person2 = session.find(Person.class, 3);
+            session.remove(person2);
 
             session.getTransaction().commit();
         } finally {
